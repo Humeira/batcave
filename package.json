@@ -1,0 +1,12 @@
+{
+  "name": "github-stars",
+  "version": "1.0.0",
+  "description": "Get all my favourite repositories from GitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Humeira Diljore",
+  "license": "MIT"
+}
