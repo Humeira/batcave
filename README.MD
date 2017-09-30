@@ -1,1 +1,1 @@
-Get all my favourite repositories from GitHub
+Get all my starred repositories from GitHub
