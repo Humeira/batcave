@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -25,4 +27,14 @@ module.exports = {
             path.join(__dirname, 'node_modules'),
         ],
     },
+
+    plugins: [
+        new webpack.DefinePlugin( {
+            'process.env': {
+                'REACT_APP_GITHUB_API_URL': JSON.stringify('https://api.github.com/users'),
+                'REACT_APP_GITHUB_USERNAME': JSON.stringify('Humeira')
+            }
+        })
+    ]
+
 };
