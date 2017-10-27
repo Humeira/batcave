@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -29,12 +29,6 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.DefinePlugin( {
-            'process.env': {
-                'REACT_APP_GITHUB_API_URL': JSON.stringify('https://api.github.com/users'),
-                'REACT_APP_GITHUB_USERNAME': JSON.stringify('Humeira')
-            }
-        })
+        new Dotenv()
     ]
-
 };
