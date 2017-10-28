@@ -1,10 +1,62 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 const apiUrl = process.env.REACT_APP_GITHUB_API_URL;
 const username = process.env.REACT_APP_GITHUB_USERNAME;
 const token = process.env.REACT_APP_GITHUB_TOKEN;
 
-class Fetch extends React.Component {
+const CardWrapper = styled.section`
+    // background: #0069ff;
+    display: grid;
+    padding: 20px;
+    @media (min-width: 991px){
+         grid-template-columns: repeat(5, 1fr);
+    }
+    grid-gap: 10px;
+`
+
+const Card = styled.a`
+    @media (min-width: 991px){
+        max-width: 250px;
+        height: 150px;
+        overflow: auto;
+        margin: 30px 0;
+    }
+    box-shadow: 0 10px 25px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+    padding: 20px;
+    background: #f4f8fb;
+    border-top: 3px solid #0069ff;
+    text-decoration: none;
+`
+
+const Title = styled.h2`
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    border-bottom: 1px solid #e6e6e6;
+  
+`
+
+const Author = styled.span`
+    font-size: 14px;
+    font-weight: 100;
+    font-weight: 100;
+    font-style: italic;
+    color: #333;
+`
+
+const Description = styled.p`
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: #333;
+    padding: 10px 0;
+    word-wrap:break-word;
+`
+
+class Repo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -124,15 +176,21 @@ class Fetch extends React.Component {
 
     render() {
         return (
-            <div>
-            {this.state.repos.map(function(item, index){
-                return    <li key={index}>{item.name}, {item.owner} </li>
-
-            })}</div>
+            <CardWrapper>
+            {this.state.repos.map(function(repo, index){
+                return <Card key={index} href={repo.url}>
+                            <Title>{repo.name}</Title>
+                            <Author>by {repo.owner}</Author>
+                            <Description>{repo.description}</Description>
+                            <img src={'https://img.shields.io/github/forks/' + repo.owner + '/' + repo.name + '.svg?style=social&label=Fork'} alt=""/>
+                            <img src={'https://img.shields.io/github/stars/' + repo.owner + '/' + repo.name + '.svg?style=social&label=Stars'} alt=""/>
+                        </Card>
+            })}
+            </CardWrapper>
     );
     }
 
 
 }
 
-export default Fetch;
+export default Repo;
