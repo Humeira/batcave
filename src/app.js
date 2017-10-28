@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import styles from './css/normalize.css';
-import Fetch from './fetch';
+import styles from './css/default.css';
+import Repo from './repo';
 import Header from './header';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
    );
 
    ReactDom.render(
-       React.createElement(Fetch),
+       React.createElement(Repo),
        document.getElementById('app')
    );
 });
